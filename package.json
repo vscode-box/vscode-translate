@@ -32,14 +32,13 @@
     "commands": [
       {
         "command": "translate.action.translateText",
-        "title": "Translate: Translate selection(s)",
+        "title": "Translate: Translate selection(s)"
       }
     ],
     "keybindings": [
       {
         "command": "translate.action.translateText",
         "key": "shift+alt+t",
-        "mac": "shift+options+t",
         "when": "editorTextFocus"
       }
     ]

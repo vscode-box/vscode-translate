@@ -8,7 +8,7 @@ VS Code package to for your translate word, base [Google(cn)](https://translate.
 
 ## Features
 
-![feature](https://raw.githubusercontent.com/Jetsly/vscode-ast/master/assets/demo.gif)
+![feature](https://raw.githubusercontent.com/Jetsly/vscode-translate/master/assets/demo.gif)
 
 ## Usage
 
