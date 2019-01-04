@@ -16,17 +16,15 @@ VS Code package to for your translate word, base [Google(cn)](https://translate.
 2. Press ALT+SHIFT+T
 3. Select the output languages you want and enjoy
 
-
 ### 0.0.1
 
 Initial release of ...
 
------------------------------------------------------------------------------------------------------------
+---
 
 ### contributors
 
-* [vscode-google-translate](https://github.com/funkyremi/vscode-google-translate)
-* [vsc-google-translate](https://github.com/imlinhanchao/vsc-google-translate)
-* Icon made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from www.flaticon.com 
+- inspire by [vscode-google-translate](https://github.com/funkyremi/vscode-google-translate), [vsc-google-translate](https://github.com/imlinhanchao/vsc-google-translate)
+- Icon made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from www.flaticon.com
 
 **Enjoy!**
