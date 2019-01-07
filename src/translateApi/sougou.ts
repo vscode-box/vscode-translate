@@ -18,7 +18,6 @@ function uuid() {
 export default async function translate (word: string, toLanguage: string = 'zh-CHS'){
   const from = 'auto'
   const s = md5('' + from + toLanguage + word + '41ee21a5ab5a13f72687a270816d1bfd')
-  // const text = encodeURIComponent(word).replace(/%20/g, '+')
   const payload = {
     from,
     to: toLanguage,
@@ -44,6 +43,7 @@ export default async function translate (word: string, toLanguage: string = 'zh-
       resolveWithFullResponse: true,
     })
     const body = JSON.parse(res.body)
+    console.log(body.data.translate.dit)
     return {
       translation: body.data.translate.dit,
     };
