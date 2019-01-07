@@ -44,11 +44,10 @@ export default async function translate (word: string, toLanguage: string = 'zh-
       resolveWithFullResponse: true,
     })
     const body = JSON.parse(res.body)
-    console.log(body.data.translate.dit)
-    return body.data.translate.dit
+    return {
+      translation: body.data.translate.dit,
+    };
   }catch(e){
     console.log(e)
   }
 }
-
-translate('hello world')

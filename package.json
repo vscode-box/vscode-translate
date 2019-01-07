@@ -2,16 +2,13 @@
   "name": "vscode-translate",
   "displayName": "vscode-translate",
   "description": "Quickly translate text right in your code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ddot",
   "icon": "resources/translate.png",
-  "bugs": {
-    "url": "https://github.com:Jetsly/vscode-translate/issues",
-    "email": "cnljli@live.com"
-  },
+  "bugs": "https://github.com/vscode-box/vscode-translate/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jetsly/vscode-translate.git"
+    "url": "https://github.com/vscode-box/vscode-translate.git"
   },
   "engines": {
     "vscode": "^1.30.0"
@@ -29,6 +26,17 @@
     "onCommand:translate.action.translateText"
   ],
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "translate - translate configuration",
+      "properties": {
+        "translate.muti-channel": {
+          "enum": ["google", "sougou"],
+          "default": "google",
+          "description": "choose muti translate channel"
+        }
+      }
+    },
     "commands": [
       {
         "command": "translate.action.translateText",

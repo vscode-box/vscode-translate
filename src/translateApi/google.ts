@@ -1,15 +1,18 @@
+import { translateApi } from '../utils';
 const request = require('request-promise').defaults({
   simple: false,
   resolveWithFullResponse: true,
 });
 const urlencode = require('urlencode');
 const iconv = require('iconv-lite');
-
+const TRANSLATE_ERROR = 'Translate failed, please check your network.';
+const URL_PREFIX = 'https://translate.google.cn/';
 let tkk = '429175.1243284773';
+
 const headers = {
   'User-Agent':
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-}
+};
 async function get(url: string) {
   let options = {
     url,
@@ -19,7 +22,7 @@ async function get(url: string) {
   let rsp = await request.get(options);
 
   if (rsp.statusCode >= 400) {
-    throw new Error('Translate failed, please check your network.');
+    throw new Error(TRANSLATE_ERROR);
   }
 
   iconv.decode(new Buffer(rsp.body), 'utf-8');
@@ -29,7 +32,7 @@ async function get(url: string) {
 
 // Get Tkk value
 (async () => {
-  let url = 'https://translate.google.cn/';
+  let url = URL_PREFIX;
   let rsp = await get(url);
   let tkkMat = rsp.body.match(/tkk:'([\d.]+)'/);
   tkk = tkkMat ? tkkMat[1] : tkk;
@@ -102,7 +105,7 @@ export default async function translate(word: string, toLanguage: string) {
     to: toLanguage,
   };
 
-  let url = `https://translate.google.cn/translate_a/single?client=webapp&sl=${lang.from}&tl=${
+  let url = `${URL_PREFIX}translate_a/single?client=webapp&sl=${lang.from}&tl=${
     lang.to
   }&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&pc=1&otf=1&ssel=0&tsel=0&kc=1&tk=${tk(
     word,
@@ -118,6 +121,6 @@ export default async function translate(word: string, toLanguage: string) {
       // candidate,
     };
   } catch (err) {
-    throw new Error('Translate failed, please check your network.');
+    throw new Error(TRANSLATE_ERROR);
   }
-}
+};
