@@ -16,9 +16,9 @@ VS Code package to for your translate word, base [Google(cn)](https://translate.
 2. Press ALT+SHIFT+T
 3. Select the output languages you want and enjoy
 
-### 0.0.1
+### 0.0.2
 
-Initial release of ...
+* add translate loading
 
 ---
 
