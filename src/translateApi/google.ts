@@ -96,7 +96,7 @@ function tk(a: any, tkk: any) {
 //   }
 //   return words;
 // }
-export async function translate(word: string, toLanguage: string) {
+export default async function translate(word: string, toLanguage: string) {
   let lang = {
     from: 'auto',
     to: toLanguage,

@@ -51,14 +51,15 @@
     "test": "yarn run compile && node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
-    "typescript": "^3.1.4",
-    "vscode": "^1.1.25",
-    "tslint": "^5.8.0",
+    "@types/mocha": "^2.2.42",
     "@types/node": "^8.10.25",
-    "@types/mocha": "^2.2.42"
+    "tslint": "^5.8.0",
+    "typescript": "^3.1.4",
+    "vscode": "^1.1.25"
   },
   "dependencies": {
     "iconv-lite": "^0.4.24",
+    "md5": "^2.2.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "urlencode": "^1.1.0"
