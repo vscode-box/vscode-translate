@@ -11,7 +11,7 @@ VS Code package to for your translate word
 ![feature](https://raw.githubusercontent.com/Jetsly/vscode-translate/master/assets/demo.gif)
 
 * translate loading
-* support [Google(cn)](https://translate.google.cn),[Sogou](https://fanyi.sogou.com/
+* support [Google(cn)](https://translate.google.cn),[Sogou](https://fanyi.sogou.com/) channel
 
 
 ## Usage
@@ -24,7 +24,7 @@ VS Code package to for your translate word
 
 ### contributors
 
-- inspire by [vscode-google-translate](https://github.com/funkyremi/vscode-google-translate), [vsc-google-translate](https://github.com/imlinhanchao/vsc-google-translate)
+- Inspire by [vscode-google-translate](https://github.com/funkyremi/vscode-google-translate), [vsc-google-translate](https://github.com/imlinhanchao/vsc-google-translate)
 - Icon made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from www.flaticon.com
 
 **Enjoy!**
