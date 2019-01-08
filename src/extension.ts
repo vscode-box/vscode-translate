@@ -2,8 +2,9 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import translate from './translateApi';
-import { languages,LRUList } from './languages';
+import { getLanguages, LRUList } from './languages';
 import { getSelectedText } from './utils';
+
 let recentlyUsed: Array<{ name: string; value: string }> = [];
 class TranslateProgress implements vscode.ProgressOptions {
   location: vscode.ProgressLocation = vscode.ProgressLocation.Window;
@@ -20,12 +21,15 @@ export function activate(context: vscode.ExtensionContext) {
           name: r.name.includes(RECENTLY_USED) ? r.name : `${r.name} ${RECENTLY_USED}`,
           value: r.value,
         }))
-        .concat(languages);
+        .concat(getLanguages());
+
       const languageName = await vscode.window.showQuickPick(quickPickData.map(l => l.name));
       const selectedLanguage = quickPickData.find(t => t.name === languageName);
+
       if (selectedLanguage && editor) {
         const { document, selections } = editor;
         recentlyUsed = LRUList(recentlyUsed, selectedLanguage);
+        
         const results = await vscode.window.withProgress(
           new TranslateProgress(),
           (progress: vscode.Progress<{ message?: string; increment?: number }>) => {

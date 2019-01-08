@@ -1,4 +1,4 @@
-import { translateApi } from '../utils';
+
 const request = require('request-promise').defaults({
   simple: false,
   resolveWithFullResponse: true,
