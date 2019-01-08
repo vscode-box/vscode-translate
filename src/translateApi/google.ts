@@ -1,4 +1,3 @@
-
 const request = require('request-promise').defaults({
   simple: false,
   resolveWithFullResponse: true,
@@ -99,7 +98,7 @@ function tk(a: any, tkk: any) {
 //   }
 //   return words;
 // }
-export default async function translate(word: string, toLanguage: string) {
+export default async function(word: string, toLanguage: string) {
   let lang = {
     from: 'auto',
     to: toLanguage,
@@ -123,4 +122,4 @@ export default async function translate(word: string, toLanguage: string) {
   } catch (err) {
     throw new Error(TRANSLATE_ERROR);
   }
-};
+}

@@ -4,21 +4,21 @@
 
 # vscode-translate for Visual Studio Code
 
-VS Code package to for your translate word, base [Google(cn)](https://translate.google.cn)
+VS Code package to for your translate word
 
 ## Features
 
 ![feature](https://raw.githubusercontent.com/Jetsly/vscode-translate/master/assets/demo.gif)
+
+* translate loading
+* support [Google(cn)](https://translate.google.cn),[Sogou](https://fanyi.sogou.com/
+
 
 ## Usage
 
 1. Select some text to translate
 2. Press ALT+SHIFT+T
 3. Select the output languages you want and enjoy
-
-### 0.0.2
-
-* add translate loading
 
 ---
 

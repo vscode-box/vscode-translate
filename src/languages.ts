@@ -1,14 +1,15 @@
 import { getChannel } from './translateApi';
 
 let lastChannel = getChannel();
+let recentlyUsed: Array<{ name: string; value: string }> = [];
 
-export function LRUList(
-  recentlyUsed: Array<{ name: string; value: string }>,
-  selectedLanguage: { name: string; value: string }
-) {
-  if(lastChannel !== getChannel()){
+export function LRUList(selectedLanguage?: { name: string; value: string }) {
+  if (lastChannel !== getChannel()) {
     lastChannel = getChannel();
     recentlyUsed = [];
+  }
+  if (selectedLanguage === undefined) {
+    return recentlyUsed;
   }
   const languages = getLanguages();
   if (recentlyUsed.find(r => r.value === selectedLanguage.value)) {
@@ -23,7 +24,7 @@ export function LRUList(
   return recentlyUsed;
 }
 
-export function getLanguages (){
+export function getLanguages() {
   return {
     google,
     sougou,
@@ -446,65 +447,65 @@ export const google = [
 ];
 
 export const sougou = [
-  { "value": "ar", "name": "阿拉伯语" },
-  { "value": "et", "name": "爱沙尼亚语" },
-  { "value": "bg", "name": "保加利亚语" },
-  { "value": "pl", "name": "波兰语" },
-  { "value": "bs-Latn", "name": "波斯尼亚语" },
-  { "value": "fa", "name": "波斯语" },
-  { "value": "mww", "name": "白苗文" },
-  { "value": "da", "name": "丹麦语" },
-  { "value": "de", "name": "德语" },
-  { "value": "ru", "name": "俄语" },
-  { "value": "fr", "name": "法语" },
-  { "value": "fi", "name": "芬兰语" },
-  { "value": "fj", "name": "斐济语" },
-  { "value": "fil", "name": "菲律宾语" },
-  { "value": "ht", "name": "海地克里奥尔语" },
-  { "value": "ko", "name": "韩语" },
-  { "value": "nl", "name": "荷兰语" },
-  { "value": "ca", "name": "加泰隆语" },
-  { "value": "cs", "name": "捷克语" },
-  { "value": "tlh", "name": "克林贡语" },
-  { "value": "tlh-Qaak", "name": "克林贡语(piqaD)" },
-  { "value": "hr", "name": "克罗地亚语" },
-  { "value": "otq", "name": "克雷塔罗奥托米语" },
-  { "value": "ro", "name": "罗马尼亚语" },
-  { "value": "lv", "name": "拉脱维亚语" },
-  { "value": "lt", "name": "立陶宛语" },
-  { "value": "ms", "name": "马来语" },
-  { "value": "mt", "name": "马耳他语" },
-  { "value": "mg", "name": "马尔加什语" },
-  { "value": "bn", "name": "孟加拉语" },
-  { "value": "af", "name": "南非荷兰语" },
-  { "value": "no", "name": "挪威语" },
-  { "value": "pt", "name": "葡萄牙语" },
-  { "value": "ja", "name": "日语" },
-  { "value": "sv", "name": "瑞典语" },
-  { "value": "sl", "name": "斯洛文尼亚语" },
-  { "value": "sr-Latn", "name": "塞尔维亚语(拉丁文)" },
-  { "value": "sr-Cyrl", "name": "塞尔维亚语(西里尔文)" },
-  { "value": "sk", "name": "斯洛伐克语" },
-  { "value": "sw", "name": "斯瓦希里语" },
-  { "value": "sm", "name": "萨摩亚语" },
-  { "value": "th", "name": "泰语" },
-  { "value": "tr", "name": "土耳其语" },
-  { "value": "to", "name": "汤加语" },
-  { "value": "ty", "name": "塔希提语" },
-  { "value": "yua", "name": "尤卡坦玛雅语" },
-  { "value": "cy", "name": "威尔士语" },
-  { "value": "uk", "name": "乌克兰语" },
-  { "value": "ur", "name": "乌尔都语" },
-  { "value": "es", "name": "西班牙语" },
-  { "value": "el", "name": "希腊语" },
-  { "value": "hu", "name": "匈牙利语" },
-  { "value": "he", "name": "希伯来语" },
-  { "value": "en", "name": "英语" },
-  { "value": "it", "name": "意大利语" },
-  { "value": "hi", "name": "印地语" },
-  { "value": "id", "name": "印度尼西亚语" },
-  { "value": "vi", "name": "越南语" },
-  { "value": "yue", "name": "粤语(繁体)" },
-  { "value": "zh-CHS", "name": "中文" },
-  { "value": "zh-CHT", "name": "中文繁体" }
+  { value: 'ar', name: '阿拉伯语' },
+  { value: 'et', name: '爱沙尼亚语' },
+  { value: 'bg', name: '保加利亚语' },
+  { value: 'pl', name: '波兰语' },
+  { value: 'bs-Latn', name: '波斯尼亚语' },
+  { value: 'fa', name: '波斯语' },
+  { value: 'mww', name: '白苗文' },
+  { value: 'da', name: '丹麦语' },
+  { value: 'de', name: '德语' },
+  { value: 'ru', name: '俄语' },
+  { value: 'fr', name: '法语' },
+  { value: 'fi', name: '芬兰语' },
+  { value: 'fj', name: '斐济语' },
+  { value: 'fil', name: '菲律宾语' },
+  { value: 'ht', name: '海地克里奥尔语' },
+  { value: 'ko', name: '韩语' },
+  { value: 'nl', name: '荷兰语' },
+  { value: 'ca', name: '加泰隆语' },
+  { value: 'cs', name: '捷克语' },
+  { value: 'tlh', name: '克林贡语' },
+  { value: 'tlh-Qaak', name: '克林贡语(piqaD)' },
+  { value: 'hr', name: '克罗地亚语' },
+  { value: 'otq', name: '克雷塔罗奥托米语' },
+  { value: 'ro', name: '罗马尼亚语' },
+  { value: 'lv', name: '拉脱维亚语' },
+  { value: 'lt', name: '立陶宛语' },
+  { value: 'ms', name: '马来语' },
+  { value: 'mt', name: '马耳他语' },
+  { value: 'mg', name: '马尔加什语' },
+  { value: 'bn', name: '孟加拉语' },
+  { value: 'af', name: '南非荷兰语' },
+  { value: 'no', name: '挪威语' },
+  { value: 'pt', name: '葡萄牙语' },
+  { value: 'ja', name: '日语' },
+  { value: 'sv', name: '瑞典语' },
+  { value: 'sl', name: '斯洛文尼亚语' },
+  { value: 'sr-Latn', name: '塞尔维亚语(拉丁文)' },
+  { value: 'sr-Cyrl', name: '塞尔维亚语(西里尔文)' },
+  { value: 'sk', name: '斯洛伐克语' },
+  { value: 'sw', name: '斯瓦希里语' },
+  { value: 'sm', name: '萨摩亚语' },
+  { value: 'th', name: '泰语' },
+  { value: 'tr', name: '土耳其语' },
+  { value: 'to', name: '汤加语' },
+  { value: 'ty', name: '塔希提语' },
+  { value: 'yua', name: '尤卡坦玛雅语' },
+  { value: 'cy', name: '威尔士语' },
+  { value: 'uk', name: '乌克兰语' },
+  { value: 'ur', name: '乌尔都语' },
+  { value: 'es', name: '西班牙语' },
+  { value: 'el', name: '希腊语' },
+  { value: 'hu', name: '匈牙利语' },
+  { value: 'he', name: '希伯来语' },
+  { value: 'en', name: '英语' },
+  { value: 'it', name: '意大利语' },
+  { value: 'hi', name: '印地语' },
+  { value: 'id', name: '印度尼西亚语' },
+  { value: 'vi', name: '越南语' },
+  { value: 'yue', name: '粤语(繁体)' },
+  { value: 'zh-CHS', name: '中文' },
+  { value: 'zh-CHT', name: '中文繁体' },
 ];

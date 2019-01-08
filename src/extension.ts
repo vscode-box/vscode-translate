@@ -5,7 +5,6 @@ import translate from './translateApi';
 import { getLanguages, LRUList } from './languages';
 import { getSelectedText } from './utils';
 
-let recentlyUsed: Array<{ name: string; value: string }> = [];
 class TranslateProgress implements vscode.ProgressOptions {
   location: vscode.ProgressLocation = vscode.ProgressLocation.Window;
 }
@@ -16,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(COMMAND_TRANSLATE, async function() {
     try {
       const editor = vscode.window.activeTextEditor;
-      const quickPickData = recentlyUsed
+      const quickPickData = LRUList()
         .map(r => ({
           name: r.name.includes(RECENTLY_USED) ? r.name : `${r.name} ${RECENTLY_USED}`,
           value: r.value,
@@ -28,27 +27,30 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (selectedLanguage && editor) {
         const { document, selections } = editor;
-        recentlyUsed = LRUList(recentlyUsed, selectedLanguage);
-        
+        LRUList(selectedLanguage);
         const results = await vscode.window.withProgress(
           new TranslateProgress(),
           (progress: vscode.Progress<{ message?: string; increment?: number }>) => {
             return Promise.all(
-              selections.map(selection =>
-                translate(getSelectedText(document, selection), selectedLanguage.value).then(
-                  ({ translation }) => {
-                    progress.report({ message: 'translate' });
-                    return { selection, translation };
-                  }
-                )
-              )
+              selections.map(selection => {
+                const selectionText = getSelectedText(document, selection);
+                return translate(selectionText, selectedLanguage.value).then(({ translation }) => {
+                  progress.report({ message: 'translate' });
+                  return { selection, selectionText, translation };
+                });
+              })
             );
           }
         );
         editor.edit(builder => {
-          results.forEach(r => {
-            if (!!r.translation) {
-              builder.replace(r.selection, r.translation);
+          results.forEach(({ translation, selectionText, selection }) => {
+            if (!!translation) {
+              builder.replace(selection, translation);
+              if (selectionText === translation) {
+                vscode.window.showWarningMessage(`[${selectionText}] translate equal`);
+              }
+            } else {
+              vscode.window.showWarningMessage(`[${selectionText}] translate fail`);
             }
           });
         });

@@ -3,5 +3,11 @@ All notable changes to the "vscode-translate" extension will be documented in th
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
-- Initial release
+## [0.0.3]
+- support sogou
+
+## [0.0.2]
+- add translate loading
+
+## [0.0.]
+- support google.cn
