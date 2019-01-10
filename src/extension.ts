@@ -57,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.showInformationMessage('translate done');
       }
     } catch (error) {
-      vscode.window.showErrorMessage(error);
+      vscode.window.showErrorMessage(error.message);
     }
   });
   context.subscriptions.push(disposable);

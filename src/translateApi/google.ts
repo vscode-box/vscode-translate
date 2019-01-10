@@ -1,10 +1,11 @@
+import { TRANSLATE_ERROR } from '../utils';
 const request = require('request-promise').defaults({
   simple: false,
   resolveWithFullResponse: true,
+  timeout: 2000,
 });
 const urlencode = require('urlencode');
 const iconv = require('iconv-lite');
-const TRANSLATE_ERROR = 'Translate failed, please check your network.';
 const URL_PREFIX = 'https://translate.google.cn/';
 let tkk = '429175.1243284773';
 
@@ -120,6 +121,7 @@ export default async function(word: string, toLanguage: string) {
       // candidate,
     };
   } catch (err) {
+    console.log(err)
     throw new Error(TRANSLATE_ERROR);
   }
 }

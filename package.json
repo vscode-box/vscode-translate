@@ -2,7 +2,7 @@
   "name": "vscode-translate",
   "displayName": "vscode-translate",
   "description": "Quickly translate text right in your code",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "ddot",
   "icon": "resources/translate.png",
   "bugs": "https://github.com/vscode-box/vscode-translate/issues",
